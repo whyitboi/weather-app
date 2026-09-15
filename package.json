@@ -1,5 +1,5 @@
 {
-  "name": "todo-list",
+  "name": "weather-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,16 +11,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/whyitboi/restaurant-page.git"
+    "url": "git+https://github.com/whyitboi/weather-app.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/whyitboi/restaurant-page/issues"
+    "url": "https://github.com/whyitboi/weather-app/issues"
   },
-  "homepage": "https://github.com/whyitboi/restaurant-page#readme",
+  "homepage": "https://github.com/whyitboi/weather-app#readme",
   "devDependencies": {
     "css-loader": "^7.1.4",
     "html-loader": "^5.1.0",

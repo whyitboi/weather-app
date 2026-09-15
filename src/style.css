@@ -1,5 +1,5 @@
 /*fonts*/
-@font-face {
+/* @font-face {
   font-family: "doods";
   src:
     url("./fonts/digory_doodles_ps-webfont.woff2") format("woff2"),
@@ -54,9 +54,10 @@
   --_padding: var(--padding, inherit);
   --_border: var(--border, inherit);
   --_borderRadius: var(--borderRadius, inherit);
-}
+} */
+
 /*variables*/
-:root {
+/* :root {
   --_fontFamily: var(--fontFamily, "gondolaSDRegular");
   --_fontSize: var(--fontSize, clamp(1em, 0.5em, +1.5vw, 2rem), 24px);
   --_fontColor: var(--fontColor, black);
@@ -107,10 +108,10 @@ body {
   --backgroundColor: #f1f5f9;
   border-radius: var(--_borderRadius);
   background-color: var(--_backgroundColor);
-}
+} */
 
 /*textarea styling*/
-textarea {
+/* textarea {
   --padding: 7px;
   font-size: 14px;
   border: var(--_border);
@@ -148,9 +149,11 @@ label[for="description"] {
 }
 label {
   font-weight: 800;
-}
+} */
+
 /*input styling*/
-.form-row input {
+
+/* .form-row input {
   border: var(--_border);
   border-radius: var(--_borderRadius);
   width: 80%;
@@ -248,4 +251,4 @@ button:hover {
 }
 input[type="checkbox"] {
   margin-left: 10px;
-}
+} */
