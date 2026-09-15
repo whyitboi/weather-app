@@ -1,0 +1,251 @@
+/*fonts*/
+@font-face {
+  font-family: "doods";
+  src:
+    url("./fonts/digory_doodles_ps-webfont.woff2") format("woff2"),
+    url("./fonts/digory_doodles_ps-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "gondolaSDRegular";
+  src:
+    url("./fonts/gondola_sd-webfont.woff2") format("woff2"),
+    url("./fonts/gondola_sd-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "gondolaSDSwashRegular";
+  src:
+    url("./fonts/gondola_sd-swash-webfont.woff2") format("woff2"),
+    url("./fonts/gondola_sd-swash-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "floraItalic";
+  src:
+    url("./fonts/florli__-webfont.woff2") format("woff2"),
+    url("./fonts/florli__-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "floraRegular";
+  src:
+    url("./fonts/florlrg_-webfont.woff2") format("woff2"),
+    url("./fonts/florlrg_-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-sizing: border-box;
+  --_fontFamily: var(--fontFamily, inherit);
+  --_fontColor: var(--fontColor, inherit);
+  --_padding: var(--padding, inherit);
+  --_fontSize: var(--fontSize, inherit);
+  --_backgroundColor: var(--backgroundColor, inherit);
+  --_padding: var(--padding, inherit);
+  --_border: var(--border, inherit);
+  --_borderRadius: var(--borderRadius, inherit);
+}
+/*variables*/
+:root {
+  --_fontFamily: var(--fontFamily, "gondolaSDRegular");
+  --_fontSize: var(--fontSize, clamp(1em, 0.5em, +1.5vw, 2rem), 24px);
+  --_fontColor: var(--fontColor, black);
+  --_padding: var(--padding, 1em);
+  --_backgroundColor: var(--backgroundColor, white);
+  --_border: var(--border, 1px solid #d6d9d9);
+  --_borderRadius: var(--borderRadius, 3px);
+}
+
+body {
+  min-height: 100vh;
+}
+.sidebar {
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  grid-column: 1/2;
+  grid-row: 1 / 4;
+  --backgroundColor: #6996a9;
+  background-color: var(--_backgroundColor);
+  padding: var(--_padding);
+}
+.logo {
+  font-family: var(--_fontFamily);
+  --fontSize: 36px;
+  font-size: var(--_fontSize);
+}
+.dashboard {
+  --backgroundColor: #e2e8f0;
+  background-color: var(--_backgroundColor);
+  grid-column: 2;
+  grid-row: 1 / span 1;
+}
+.nav {
+  grid-row: 2/3;
+}
+#todoDialog[open] {
+  margin: auto;
+  position: fixed;
+  padding: var(--_padding);
+  --backgroundColor: #f1f5f9;
+  background-color: var(--_backgroundColor);
+}
+.edit-todo,
+.new-project,
+.new-todo {
+  display: flex;
+  flex-direction: column;
+  --backgroundColor: #f1f5f9;
+  border-radius: var(--_borderRadius);
+  background-color: var(--_backgroundColor);
+}
+
+/*textarea styling*/
+textarea {
+  --padding: 7px;
+  font-size: 14px;
+  border: var(--_border);
+  border-radius: var(--_borderRadius);
+  min-height: 200px;
+  margin-bottom: 10px;
+  width: 250px;
+  height: 150px;
+  padding: var(--_padding);
+  resize: none;
+}
+
+.formTextArea,
+select {
+  width: 80%;
+}
+
+select {
+  background-color: var(--_backgroundColor);
+  height: 100%;
+}
+.form-row {
+  margin-bottom: 30px;
+  display: grid;
+  grid-template-columns: 100px 250px;
+  align-items: center;
+}
+.form-row label,
+.form-row legend,
+select {
+  margin-bottom: 15px;
+}
+label[for="description"] {
+  align-self: flex-start;
+}
+label {
+  font-weight: 800;
+}
+/*input styling*/
+.form-row input {
+  border: var(--_border);
+  border-radius: var(--_borderRadius);
+  width: 80%;
+  --padding: 10px;
+  padding: var(--_padding);
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+#button-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+}
+button {
+  --fontColor: white;
+  --padding: 4px;
+  --borderRadius: 6px;
+  --backgroundColor: #475569;
+  width: fit-content;
+  height: fit-content;
+  padding: var(--_padding);
+  border-radius: var(--_borderRadius);
+  background-color: var(--_backgroundColor);
+  color: var(--_fontColor);
+}
+button:hover {
+  background-color: #334155;
+}
+
+#content {
+  line-height: 1.5em;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 50px 1fr 50px;
+  color: var(--_fontColor);
+  font-size: var(--_fontSize);
+}
+.article {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  grid-column: 2;
+  padding: var(--_padding);
+  --backgroundColor: #f8fafc;
+  background-color: var(--_backgroundColor);
+}
+
+.card {
+  display: grid;
+  height: 300px;
+  overflow: hidden;
+  padding: var(--_padding);
+  border-radius: 4px;
+  border-collapse: collapse;
+  --border: 2px solid black;
+  border: var(--_border);
+}
+.todo-info,
+.project-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+.cardWrapper {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 50px 1fr;
+  grid-column: 1 / span 2;
+}
+.buttonWrapper {
+  display: flex;
+  grid-column: 1/-1;
+  max-height: fit-content;
+}
+.card-details {
+  display: grid;
+  height: 300px;
+  overflow: hidden;
+  padding: var(--_padding);
+  border-radius: 4px;
+  border-collapse: collapse;
+  --border: 2px solid black;
+  border: var(--_border);
+}
+#high-priority {
+  background-color: #fecaca;
+}
+#normal-priority {
+  background-color: #fef3c7;
+}
+#low-priority {
+  background-color: #dcfce7;
+}
+input[type="checkbox"] {
+  margin-left: 10px;
+}
