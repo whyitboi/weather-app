@@ -1,4 +1,4 @@
-import { domLoad } from "./domLoad";
+import { domLoad } from "./domLoad.js";
 
 domLoad();
 
