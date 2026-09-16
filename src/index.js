@@ -12,9 +12,10 @@ async function getWeather(location) {
 
     const weatherData = await response.json();
     const { currentConditions, description } = weatherData;
-    //remember to destruct curentConditions as well to get only what you want
-    return { currentConditions, description };
-    //console.log(weatherData.description);
+    console.log(weatherData);
+    const { conditions, datetime, humidity, icon, temp, sunrise } =
+      currentConditions;
+    return { conditions, datetime, humidity, icon, temp, sunrise, description };
   } catch (error) {
     //can use (error instancesof SyntaxError)
     if (error.name === "SyntaxError") {
@@ -22,15 +23,28 @@ async function getWeather(location) {
     } else alert(error);
   }
 }
-function displayWeather(object) {
-  //console.log(object);
-  weatherOutput.textContent = object.description;
-  // /weatherOutput.appendChild(object);
+function processData(object) {
+  let day = "";
+  if (object.datetime > object.sunrise) {
+    day = "tomorrow";
+  } else day = "today";
+  const weatherOutputText =
+    "The time is " +
+    object.datetime +
+    " with humidity levels at " +
+    object.humidity +
+    " and sunrise expected at " +
+    object.sunrise +
+    " " +
+    day +
+    ". Overall, " +
+    object.description;
+  weatherOutput.textContent = weatherOutputText;
 }
 
 btn.addEventListener("click", () => {
   getWeather(search.value).then((response) => {
-    displayWeather(response);
+    processData(response);
   });
   //weatherOutput.appendChild(weatherInfo.description);
 });
