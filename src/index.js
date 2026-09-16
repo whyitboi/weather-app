@@ -1,3 +1,7 @@
+import { domLoad } from "./domLoad";
+
+domLoad();
+
 const btn = document.querySelector("button");
 const search = document.getElementById("cats");
 const weatherOutput = document.getElementById("output");
