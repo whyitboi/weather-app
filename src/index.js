@@ -4,6 +4,7 @@ import { getWeather, processData } from "./getWeather.js";
 domLoad();
 
 const btn = document.querySelector("button");
+const form = document.querySelector("form");
 const search = document.getElementById("searchBar");
 const weatherOutput = document.getElementById("output");
 
@@ -35,12 +36,14 @@ metric.addEventListener("change", () => {
   }
 });
 
-btn.addEventListener("submit", (button) => {
-  console.log(search.validity);
-  if (!search.validity) {
-    search.setCustomValidity("This needs a value"); //.log("location cannot be empty")
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (search.validity.valueMissing) {
+    search.setCustomValidity("Location cannot be empty");
+    search.reportValidity();
+    return;
   } else search.setCustomValidity("");
-  search.reportValidity();
+
   getWeather(search.value, metric.value).then((response) => {
     if (response === undefined) return;
     weatherOutput.textContent = processData(

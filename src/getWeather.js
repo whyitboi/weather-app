@@ -36,7 +36,7 @@ function processData(object, metric) {
     " with humidity levels at " +
     object.humidity +
     " and sunrise expected at " +
-    object.sunrise +
+    object.sunrise.slice(0, 5) +
     " " +
     day +
     ". Overall, " +
