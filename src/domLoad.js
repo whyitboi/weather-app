@@ -8,33 +8,49 @@ function domLoad() {
   const search = document.createElement("search");
   //create label
   const searchLabel = document.createElement("label");
-  searchLabel.setAttribute("for", "cats");
-  searchLabel.textContent = "Enter your location";
+  Object.assign(searchLabel, {
+    for: "cats",
+    textContent: "Enter your location",
+  });
   //input
   const searchInput = document.createElement("input");
-  searchInput.setAttribute("type", "search");
-  searchInput.setAttribute("id", "cats");
+  Object.assign(searchInput, {
+    id: "cats",
+    type: "search",
+  });
   //create button
   const searchButton = document.createElement("button");
-  searchButton.setAttribute("type", "button");
-  searchButton.textContent = "Get Weather Forecast";
+  Object.assign(searchButton, {
+    type: "button",
+    textContent: "Get Forecast",
+  });
   //create display div
   const weatherOutput = document.createElement("div");
   weatherOutput.setAttribute("id", "output");
 
   //create temperature scale toggle
+  const toggleTempScalesLabel = document.createElement("span");
   const toggleTempScales = document.createElement("label");
   const toggleTempScalesInput = document.createElement("input");
   const toggleTempScalesSpan = document.createElement("span");
   toggleTempScales.setAttribute("class", "switch");
-  toggleTempScalesInput.setAttribute("type", "checkbox");
+  toggleTempScales.setAttribute("id", "switch");
   toggleTempScalesSpan.setAttribute("class", "slider");
+  Object.assign(toggleTempScalesLabel, {
+    id: "switch",
+    textContent: "\u00B0F",
+  });
+  Object.assign(toggleTempScalesInput, {
+    id: "tempScale",
+    type: "checkbox",
+    value: "us",
+  });
 
   toggleTempScales.append(toggleTempScalesInput, toggleTempScalesSpan);
 
   search.append(searchLabel, searchInput, searchButton);
   content.appendChild(search);
-  content.appendChild(toggleTempScales);
+  content.append(toggleTempScalesLabel, toggleTempScales);
   content.appendChild(weatherOutput);
 }
 export { domLoad };
