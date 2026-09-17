@@ -252,3 +252,47 @@ button:hover {
 input[type="checkbox"] {
   margin-left: 10px;
 } */
+
+/*CSS styling to convert checkbox to toggle switch*/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  border-radius: 34px;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+.slider:before {
+  border-radius: 50%;
+  position: absolute;
+  content: "";
+  width: 26px;
+  height: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: black;
+  transition: 0.4s;
+}
+input:checked + .slider {
+  background-color: #2196f3;
+}
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+input:checked + .slider:before {
+  box-shadow: 0 0 1px #2196f3;
+}

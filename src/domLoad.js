@@ -1,3 +1,5 @@
+import "./style.css";
+
 function domLoad() {
   const content = document.getElementById("content");
 
@@ -26,7 +28,7 @@ function domLoad() {
   const toggleTempScalesSpan = document.createElement("span");
   toggleTempScales.setAttribute("class", "switch");
   toggleTempScalesInput.setAttribute("type", "checkbox");
-  toggleTempScalesSpan.setAttribute("class", "slider round");
+  toggleTempScalesSpan.setAttribute("class", "slider");
 
   toggleTempScales.append(toggleTempScalesInput, toggleTempScalesSpan);
 
