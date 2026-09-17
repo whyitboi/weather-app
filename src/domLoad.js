@@ -3,6 +3,13 @@ import "./style.css";
 function domLoad() {
   const content = document.getElementById("content");
 
+  //create img to hold svg
+  const weatherIcon = document.createElement("img");
+  Object.assign(weatherIcon, {
+    id: "weatherIcon",
+    className: "weatherIcon",
+  });
+
   //create the form
   const form = document.createElement("form");
   Object.assign(form, {
@@ -60,6 +67,6 @@ function domLoad() {
   form.appendChild(search);
   content.appendChild(form);
   content.append(toggleTempScalesLabel, toggleTempScales);
-  content.appendChild(weatherOutput);
+  content.append(weatherIcon, weatherOutput);
 }
 export { domLoad };

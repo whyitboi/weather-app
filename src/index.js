@@ -19,10 +19,8 @@ metric.addEventListener("change", () => {
     metric.value = "metric";
     getWeather(search.value, metric.value).then((response) => {
       if (response === undefined) return;
-      displayWeatherData(
-        processData(response, metricDisplay.textContent),
-        weatherOutput,
-      );
+      const processedData = processData(response, metricDisplay.textContent);
+      displayWeatherData(processedData, weatherOutput);
     });
     metricDisplay.textContent = "\u00B0C";
   } else {
@@ -30,10 +28,8 @@ metric.addEventListener("change", () => {
     metricDisplay.textContent = "\u00B0F";
     getWeather(search.value, metric.value).then((response) => {
       if (response === undefined) return;
-      displayWeatherData(
-        processData(response, metricDisplay.textContent),
-        weatherOutput,
-      );
+      const processedData = processData(response, metricDisplay.textContent);
+      displayWeatherData(processedData, weatherOutput);
     });
   }
 });
@@ -48,10 +44,8 @@ form.addEventListener("submit", (event) => {
 
   getWeather(search.value, metric.value).then((response) => {
     if (response === undefined) return;
-    displayWeatherData(
-      processData(response, metricDisplay.textContent),
-      weatherOutput,
-    );
+    const processedData = processData(response, metricDisplay.textContent);
+    displayWeatherData(processedData, weatherOutput);
   });
   //weatherOutput.textContent = );
 });

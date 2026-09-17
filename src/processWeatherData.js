@@ -18,5 +18,6 @@ export function processData(object, metric) {
     ". Overall, " +
     object.description;
   const icon = object.icon;
+  console.log(icon);
   return { weatherOutputText, icon };
 }
