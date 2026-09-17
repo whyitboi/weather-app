@@ -1,5 +1,5 @@
 // to change the completed status of the todo
-async function getWeather(location, scale) {
+export async function getWeather(location, scale) {
   try {
     const response = await fetch(
       "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/" +
@@ -22,28 +22,3 @@ async function getWeather(location, scale) {
     } else alert(error);
   }
 }
-function processData(object, metric) {
-  let day = "";
-  if (object.datetime > object.sunrise) {
-    day = "tomorrow";
-  } else day = "today";
-  const weatherOutputText =
-    "The time is " +
-    object.datetime.slice(0, 5) +
-    ", the temperature is " +
-    object.temp +
-    metric +
-    " with humidity levels at " +
-    object.humidity +
-    " and sunrise expected at " +
-    object.sunrise.slice(0, 5) +
-    " " +
-    day +
-    ". Overall, " +
-    object.description +
-    " " +
-    object.icon;
-  return weatherOutputText;
-}
-
-export { getWeather, processData };

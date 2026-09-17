@@ -1,5 +1,7 @@
 import { domLoad } from "./domLoad.js";
-import { getWeather, processData } from "./getWeather.js";
+import { getWeather } from "./getWeather.js";
+import { processData } from "./processWeatherData.js";
+import { displayWeatherData } from "./displayWeatherData.js";
 
 domLoad();
 
