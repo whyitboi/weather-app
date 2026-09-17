@@ -19,9 +19,9 @@ metric.addEventListener("change", () => {
     metric.value = "metric";
     getWeather(search.value, metric.value).then((response) => {
       if (response === undefined) return;
-      weatherOutput.textContent = processData(
-        response,
-        metricDisplay.textContent,
+      displayWeatherData(
+        processData(response, metricDisplay.textContent),
+        weatherOutput,
       );
     });
     metricDisplay.textContent = "\u00B0C";
@@ -30,9 +30,9 @@ metric.addEventListener("change", () => {
     metricDisplay.textContent = "\u00B0F";
     getWeather(search.value, metric.value).then((response) => {
       if (response === undefined) return;
-      weatherOutput.textContent = processData(
-        response,
-        metricDisplay.textContent,
+      displayWeatherData(
+        processData(response, metricDisplay.textContent),
+        weatherOutput,
       );
     });
   }
@@ -48,9 +48,9 @@ form.addEventListener("submit", (event) => {
 
   getWeather(search.value, metric.value).then((response) => {
     if (response === undefined) return;
-    weatherOutput.textContent = processData(
-      response,
-      metricDisplay.textContent,
+    displayWeatherData(
+      processData(response, metricDisplay.textContent),
+      weatherOutput,
     );
   });
   //weatherOutput.textContent = );
