@@ -18,13 +18,8 @@ async function getWeather(location, scale) {
   } catch (error) {
     //can use (error instancesof SyntaxError)
     if (error.name === "SyntaxError") {
-      console.log(error.name);
       alert("Please enter a valid location");
-    } else if (location === "undefined") {
-      console.log("error.name");
     } else alert(error);
-
-    return;
   }
 }
 function processData(object, metric) {
@@ -34,7 +29,7 @@ function processData(object, metric) {
   } else day = "today";
   const weatherOutputText =
     "The time is " +
-    object.datetime +
+    object.datetime.slice(0, 5) +
     ", the temperature is " +
     object.temp +
     metric +
@@ -45,7 +40,9 @@ function processData(object, metric) {
     " " +
     day +
     ". Overall, " +
-    object.description;
+    object.description +
+    " " +
+    object.icon;
   return weatherOutputText;
 }
 

@@ -3,25 +3,33 @@ import "./style.css";
 function domLoad() {
   const content = document.getElementById("content");
 
+  //create the form
+  const form = document.createElement("form");
+  Object.assign(form, {
+    method: "get",
+    noValidate: true,
+  });
+
   //create search bar label and button
   //create search
   const search = document.createElement("search");
   //create label
   const searchLabel = document.createElement("label");
   Object.assign(searchLabel, {
-    for: "cats",
+    for: "searchBar",
     textContent: "Enter your location",
   });
   //input
   const searchInput = document.createElement("input");
   Object.assign(searchInput, {
-    id: "cats",
+    id: "searchBar",
     type: "search",
+    required: true,
   });
   //create button
   const searchButton = document.createElement("button");
   Object.assign(searchButton, {
-    type: "button",
+    type: "submit",
     textContent: "Get Forecast",
   });
   //create display div
@@ -49,7 +57,8 @@ function domLoad() {
   toggleTempScales.append(toggleTempScalesInput, toggleTempScalesSpan);
 
   search.append(searchLabel, searchInput, searchButton);
-  content.appendChild(search);
+  form.appendChild(search);
+  content.appendChild(form);
   content.append(toggleTempScalesLabel, toggleTempScales);
   content.appendChild(weatherOutput);
 }
