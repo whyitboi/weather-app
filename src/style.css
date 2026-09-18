@@ -135,9 +135,7 @@ form {
   display: flex;
   gap: 50px;
 }
-/* img {
-  gird-column:
-} */
+
 span#switch {
   grid-row: 2/3;
   justify-self: flex-end;

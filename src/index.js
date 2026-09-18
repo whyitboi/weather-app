@@ -5,7 +5,6 @@ import { displayWeatherData } from "./displayWeatherData.js";
 
 domLoad();
 
-const btn = document.querySelector("button");
 const form = document.querySelector("form");
 const search = document.getElementById("searchBar");
 const weatherOutput = document.getElementById("output");
@@ -14,24 +13,17 @@ const metric = document.getElementById("tempScale");
 const metricDisplay = document.getElementById("switch");
 
 metric.addEventListener("change", () => {
-  // console.log(metric.value);
-  if (metricDisplay.textContent === "\u00B0F") {
+  if (metric.value === "us") {
     metric.value = "metric";
-    getWeather(search.value, metric.value).then((response) => {
-      if (response === undefined) return;
-      const processedData = processData(response, metricDisplay.textContent);
-      displayWeatherData(processedData, weatherOutput);
-    });
-    metricDisplay.textContent = "\u00B0C";
-  } else {
+  } else if (metric.value === "metric") {
     metric.value = "us";
-    metricDisplay.textContent = "\u00B0F";
-    getWeather(search.value, metric.value).then((response) => {
-      if (response === undefined) return;
-      const processedData = processData(response, metricDisplay.textContent);
-      displayWeatherData(processedData, weatherOutput);
-    });
   }
+
+  getWeather(search.value, metric.value).then((response) => {
+    if (response === undefined) return;
+    const processedData = processData(response);
+    displayWeatherData(processedData, metricDisplay, weatherOutput);
+  });
 });
 
 form.addEventListener("submit", (event) => {
@@ -44,10 +36,9 @@ form.addEventListener("submit", (event) => {
 
   getWeather(search.value, metric.value).then((response) => {
     if (response === undefined) return;
-    const processedData = processData(response, metricDisplay.textContent);
-    displayWeatherData(processedData, weatherOutput);
+    const processedData = processData(response);
+    displayWeatherData(processedData, metricDisplay, weatherOutput);
   });
-  //weatherOutput.textContent = );
 });
 
 export { metric };

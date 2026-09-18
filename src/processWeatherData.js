@@ -1,4 +1,4 @@
-export function processData(object, metric) {
+export function processData(object) {
   let day = "";
   if (object.datetime > object.sunrise) {
     day = "tomorrow";
@@ -6,10 +6,7 @@ export function processData(object, metric) {
   const weatherOutputText =
     "The time is " +
     object.datetime.slice(0, 5) +
-    ", the temperature is " +
-    object.temp +
-    metric +
-    " with humidity levels at " +
+    " humidity levels are at " +
     object.humidity +
     " and sunrise expected at " +
     object.sunrise.slice(0, 5) +
@@ -18,6 +15,7 @@ export function processData(object, metric) {
     ". Overall, " +
     object.description;
   const icon = object.icon;
-  console.log(icon);
-  return { weatherOutputText, icon };
+  const temp = object.temp;
+  //console.log("From processData:" + temp);
+  return { weatherOutputText, icon, temp };
 }

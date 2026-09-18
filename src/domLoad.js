@@ -51,6 +51,10 @@ function domLoad() {
   toggleTempScales.setAttribute("class", "switch");
   toggleTempScales.setAttribute("id", "switch");
   toggleTempScalesSpan.setAttribute("class", "slider");
+  Object.assign(toggleTempScales, {
+    id: "switch",
+    classname: "switch",
+  });
   Object.assign(toggleTempScalesLabel, {
     id: "switch",
     textContent: "\u00B0F",
