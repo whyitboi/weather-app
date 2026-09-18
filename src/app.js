@@ -1,6 +1,7 @@
 import { getWeather } from "./getWeather.js";
 import { processData } from "./processWeatherData.js";
 import { displayWeatherData } from "./displayWeatherData.js";
+import { checkMetric } from "./checkMetric.js";
 
 function app() {
   const form = document.querySelector("form");
@@ -11,17 +12,22 @@ function app() {
   const metricDisplay = document.getElementById("switch");
 
   metric.addEventListener("change", () => {
-    if (metric.value === "us") {
-      metric.value = "metric";
-    } else if (metric.value === "metric") {
-      metric.value = "us";
-    }
+    checkMetric(metric, metricDisplay);
+    // if (metric.value === "us") {
+    //   metric.value = "metric";
+    // } else if (metric.value === "metric") {
+    //   metric.value = "us";
+    // }
 
-    getWeather(search.value, metric.value).then((response) => {
-      if (response === undefined) return;
-      const processedData = processData(response);
-      displayWeatherData(processedData, metricDisplay, weatherOutput);
-    });
+    if (search.value === "") {
+      return;
+    } else {
+      getWeather(search.value, metric.value).then((response) => {
+        if (response === undefined) return;
+        const processedData = processData(response);
+        displayWeatherData(processedData, metricDisplay, weatherOutput);
+      });
+    }
   });
 
   form.addEventListener("submit", (event) => {
