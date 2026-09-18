@@ -44,7 +44,7 @@ function domLoad() {
   weatherOutput.setAttribute("id", "output");
 
   //create temperature scale toggle
-  const toggleTempScalesLabel = document.createElement("span");
+  const toggleTempScalesTemp = document.createElement("span");
   const toggleTempScales = document.createElement("label");
   const toggleTempScalesInput = document.createElement("input");
   const toggleTempScalesSpan = document.createElement("span");
@@ -55,13 +55,8 @@ function domLoad() {
     id: "switch",
     className: "switch",
   });
-
-  Object.assign(toggleTempScales, {
-    id: "switch",
-    classname: "switch",
-  });
-  Object.assign(toggleTempScalesLabel, {
-    id: "switch",
+  Object.assign(toggleTempScalesTemp, {
+    id: "temperature",
     textContent: "\u00B0F",
   });
   Object.assign(toggleTempScalesInput, {
@@ -104,7 +99,7 @@ function domLoad() {
   content.append(
     form,
     locationName,
-    toggleTempScalesLabel,
+    toggleTempScalesTemp,
     iconDesc,
     humiditySunrise,
     scaleDiv,

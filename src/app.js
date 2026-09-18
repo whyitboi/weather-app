@@ -9,7 +9,7 @@ function app() {
   const weatherOutput = document.getElementById("output");
 
   const metric = document.getElementById("tempScale");
-  const metricDisplay = document.getElementById("switch");
+  const metricDisplay = document.getElementById("temperature");
 
   metric.addEventListener("change", () => {
     checkMetric(metric, metricDisplay);
