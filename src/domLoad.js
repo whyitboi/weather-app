@@ -48,9 +48,14 @@ function domLoad() {
   const toggleTempScales = document.createElement("label");
   const toggleTempScalesInput = document.createElement("input");
   const toggleTempScalesSpan = document.createElement("span");
-  toggleTempScales.setAttribute("class", "switch");
-  toggleTempScales.setAttribute("id", "switch");
+
   toggleTempScalesSpan.setAttribute("class", "slider");
+
+  Object.assign(toggleTempScales, {
+    id: "switch",
+    className: "switch",
+  });
+
   Object.assign(toggleTempScales, {
     id: "switch",
     classname: "switch",
@@ -65,12 +70,46 @@ function domLoad() {
     value: "us",
   });
 
+  //Create container divs for locationName, iconDescriotion
+  //and [humidity, sunrise]
+  const locationName = document.createElement("div");
+  const iconDesc = document.createElement("div");
+  const humiditySunrise = document.createElement("div");
+  const scaleDiv = document.createElement("div");
+
+  //create labels and paragraphs for humidy and sunrise
+  const humidityLabel = document.createElement("label");
+  const sunriseLabel = document.createElement("label");
+  const humidityPara = document.createElement("p");
+  const sunrisePara = document.createElement("p");
+
+  //set attributes
+  locationName.setAttribute("id", "locationName");
+  iconDesc.setAttribute("id", "iconDesc");
+  humiditySunrise.setAttribute("id", "humiditySunrise");
+  scaleDiv.setAttribute("id", "scaleDiv");
+
+  humiditySunrise.append(
+    humidityLabel,
+    sunriseLabel,
+    humidityPara,
+    sunrisePara,
+  );
+
   toggleTempScales.append(toggleTempScalesInput, toggleTempScalesSpan);
+  scaleDiv.append(toggleTempScales);
 
   search.append(searchLabel, searchInput, searchButton);
   form.appendChild(search);
-  content.appendChild(form);
-  content.append(toggleTempScalesLabel, toggleTempScales);
-  content.append(weatherIcon, weatherOutput);
+  content.append(
+    form,
+    locationName,
+    toggleTempScalesLabel,
+    iconDesc,
+    humiditySunrise,
+    scaleDiv,
+    weatherIcon,
+    weatherOutput,
+  );
 }
 export { domLoad };
