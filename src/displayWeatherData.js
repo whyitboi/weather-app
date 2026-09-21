@@ -1,4 +1,6 @@
 export function displayWeatherData(object, tempSpan, weatherOutputDiv) {
+  const content = document.getElementById("content");
+
   const weatherIcon = document.getElementById("weatherIcon");
   const metric = document.getElementById("tempScale").value;
 
@@ -25,6 +27,8 @@ export function displayWeatherData(object, tempSpan, weatherOutputDiv) {
     //${object.icon}
     weatherIcon.src = iconModule.default;
   });
+
+  content.className = object.icon;
   locationName.textContent = object.location;
 
   humidityLabel.textContent = "Humidity";

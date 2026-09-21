@@ -70,6 +70,38 @@
 
 body {
   min-height: 100vh;
+  background: linear-gradient(to bottom, #72c6ef, #f5e6a8);
+  transition: background 0.6s ease;
+  /*clear-day
+   background: linear-gradient(to bottom, #87cceeb, #f7d774); 
+  
+  clear-night
+   background: linear-gradient(to bottom, #0f172a, #312e81);
+
+   partly-cloudy-day
+   background: linear-gradient(to bottom, #93c5fd, #cbd5e1);
+
+   partly-cloudy-night
+   background: linear-gradient(to bottom, #1e293b, #475569);
+
+   cloudy
+   background: linear-gradient(to bottom, #94a3b8, #64748b);
+
+   rain
+   background: linear-gradient(to bottom, #475569, #1e3a5f);
+
+   snow
+   background: linear-gradient(to bottom, #bae6fd, #f8fafc);
+
+   fog
+   background: linear-gradient(to bottom, #9ca3af, #d1d5db);
+   */
+}
+.partly-cloudy-day {
+  background: linear-gradient(to bottom, #93c5fd, #cbd5e1);
+}
+.cloudy {
+  background: linear-gradient(to bottom, #94a3b8, #64748b);
 }
 
 /*input styling*/
@@ -146,7 +178,7 @@ label {
 
 img {
   grid-column: 2;
-  width: 5em;
+  width: min(5em, 100%);
   align-self: center;
 }
 #searchBar {
@@ -171,20 +203,20 @@ img {
 }
 
 .weatherDataCard {
-  border: 2px solid black;
   border-radius: 8px;
-  background-color: grey;
+  background-color: rgba(255, 255, 255, 0.35);
   position: relative;
   height: 200px;
-  min-width: 200px;
+  min-width: fit-content;
   overflow: hidden;
+  backdrop-filter: blur(10px);
 }
 .weatherDataCard {
   padding: 20px;
 }
 div#tempCard {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: max-content minmax(0, 1fr);
 }
 button {
   --fontColor: black;
