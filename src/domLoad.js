@@ -75,6 +75,9 @@ function domLoad() {
   const weatherDataSunrise = document.createElement("div");
 
   weatherData.setAttribute("class", "weatherDataContainer");
+  locationName.setAttribute("id", "locationName");
+  iconDesc.setAttribute("id", "iconDesc");
+  scaleDiv.setAttribute("id", "scaleDiv");
 
   Object.assign(weatherDataTemp, {
     id: "tempCard",
@@ -103,13 +106,18 @@ function domLoad() {
   const windPara = document.createElement("p");
 
   //set attributes
-  locationName.setAttribute("id", "locationName");
-  iconDesc.setAttribute("id", "iconDesc");
+  humidityLabel.setAttribute("id", "humidityLabel");
+  humidityPara.setAttribute("id", "humidityPara");
+  sunriseLabel.setAttribute("id", "sunriseLabel");
+  sunrisePara.setAttribute("id", "sunrisePara");
+  windLabel.setAttribute("id", "windLabel");
+  windPara.setAttribute("id", "windPara");
 
-  scaleDiv.setAttribute("id", "scaleDiv");
+  toggleTempScales.append(toggleTempScalesInput, toggleTempScalesSpan);
+  scaleDiv.append(toggleTempScales);
 
   //append elements to cards
-  weatherDataTemp.append(toggleTempScalesTemp, weatherIcon);
+  weatherDataTemp.append(toggleTempScalesTemp, weatherIcon, scaleDiv);
   weatherDataHumidity.append(humidityLabel, humidityPara);
   weatherDataSunrise.append(sunriseLabel, sunrisePara);
   weatherDataWind.append(windLabel, windPara);
@@ -122,11 +130,8 @@ function domLoad() {
     weatherDataSunrise,
   );
 
-  toggleTempScales.append(toggleTempScalesInput, toggleTempScalesSpan);
-  scaleDiv.append(toggleTempScales);
-
   search.append(searchInput, searchButton);
   form.appendChild(search);
-  content.append(form, locationName, weatherData, scaleDiv, weatherOutput);
+  content.append(form, locationName, weatherData, weatherOutput);
 }
 export { domLoad };

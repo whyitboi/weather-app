@@ -10,11 +10,22 @@ export async function getWeather(location, scale) {
     );
 
     const weatherData = await response.json();
-    const { currentConditions, description } = weatherData;
-    const { conditions, datetime, humidity, icon, temp, sunrise } =
+    console.log(weatherData);
+    const { address, currentConditions, description } = weatherData;
+    const { conditions, datetime, humidity, icon, temp, sunrise, windspeed } =
       currentConditions;
 
-    return { conditions, datetime, humidity, icon, temp, sunrise, description };
+    return {
+      address,
+      conditions,
+      datetime,
+      humidity,
+      icon,
+      temp,
+      sunrise,
+      description,
+      windspeed,
+    };
   } catch (error) {
     //can use (error instancesof SyntaxError)
     if (error.name === "SyntaxError") {

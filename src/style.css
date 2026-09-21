@@ -89,7 +89,7 @@ body {
   height: 100vh;
   max-height: 100vh;
   display: grid;
-  grid-template-rows: repeat(2, 60px) 200px 100px 200px 60px 100px;
+  grid-template-rows: repeat(2, 100px) auto 100px;
   grid-template-columns: repeat(2, 1fr);
   color: var(--_fontColor);
   font-size: var(--_fontSize);
@@ -102,7 +102,7 @@ div#output {
   align-self: center;
 }
 div#output {
-  grid-row: 7;
+  grid-row: 4;
 }
 
 form {
@@ -111,20 +111,13 @@ form {
 }
 div#locationName {
   grid-column: 1 / span 2;
+  font-size: 36px;
+  text-align: center;
+  padding-top: 10px;
 }
-div#iconDesc {
-  grid-column: 1 / span 2;
-  grid-row: 4;
-}
-div#humiditySunrise {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 120px 1fr;
-  grid-column: 1 / span 2;
-  grid-row: 5;
-}
+
 span#temperature {
-  grid-row: 3;
+  /* grid-row: 3; */
   justify-self: flex-end;
   align-self: center;
   font-size: 40px;
@@ -133,9 +126,10 @@ span#temperature {
 div#scaleDiv {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-row: 6;
+  grid-row: 2;
   grid-column: 1 / span 2;
   justify-self: center;
+  margin-bottom: 10px;
 }
 label.switch {
   grid-column: 2;
@@ -151,7 +145,9 @@ label {
 }
 
 img {
+  grid-column: 2;
   width: 5em;
+  align-self: center;
 }
 #searchBar {
   outline: none;
@@ -159,6 +155,7 @@ img {
   border-radius: 6px;
   height: 50px;
   font-size: 20px;
+  padding: 5px;
 }
 #searchBar:focus {
   border: 4px solid #2196f3;
@@ -166,18 +163,28 @@ img {
 .weatherDataContainer {
   grid-column: 1 / span 2;
   display: grid;
-  grid-template-columns: repeat(auto fit minmax(200px, 1fr)) 1fr;
-  border: 2px solid black;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  height: fit-content;
   gap: 20px;
-  padding: 20px;
-  background-color: grey;
+  padding: 10px;
 }
 
 .weatherDataCard {
   border: 2px solid black;
+  border-radius: 8px;
+  background-color: grey;
   position: relative;
   height: 200px;
+  min-width: 200px;
   overflow: hidden;
+}
+.weatherDataCard {
+  padding: 20px;
+}
+div#tempCard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 button {
   --fontColor: black;
@@ -201,7 +208,7 @@ button:hover {
   position: relative;
   display: inline-block;
   width: 100px;
-  height: 34px;
+  height: 24px;
 }
 
 .switch input {
@@ -224,8 +231,8 @@ button:hover {
   border-radius: 50%;
   position: absolute;
   content: "";
-  width: 26px;
-  height: 26px;
+  width: 16px;
+  height: 16px;
   left: 4px;
   bottom: 4px;
   background-color: black;
@@ -235,7 +242,7 @@ input:checked + .slider {
   background-color: #2196f3;
 }
 input:checked + .slider:before {
-  transform: translateX(66px);
+  transform: translateX(76px);
 }
 /* input:checked + .slider:before {
   box-shadow: 0 0 1px #2196f3;

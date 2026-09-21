@@ -1,6 +1,18 @@
 export function displayWeatherData(object, tempSpan, weatherOutputDiv) {
   const weatherIcon = document.getElementById("weatherIcon");
   const metric = document.getElementById("tempScale").value;
+
+  const humidityLabel = document.getElementById("humidityLabel");
+  const humidityPara = document.getElementById("humidityPara");
+
+  const windLabel = document.getElementById("windLabel");
+  const windPara = document.getElementById("windPara");
+
+  const sunriseLabel = document.getElementById("sunriseLabel");
+  const sunrisePara = document.getElementById("sunrisePara");
+
+  const locationName = document.getElementById("locationName");
+
   let metricIcon;
   if (metric === "us") {
     metricIcon = "\u00B0F";
@@ -13,4 +25,14 @@ export function displayWeatherData(object, tempSpan, weatherOutputDiv) {
     //${object.icon}
     weatherIcon.src = iconModule.default;
   });
+  locationName.textContent = object.location;
+
+  humidityLabel.textContent = "Humidity";
+  humidityPara.textContent = object.humid;
+
+  sunriseLabel.textContent = "Sunrise";
+  sunrisePara.textContent = object.sunrise;
+
+  windLabel.textContent = "Wind";
+  windPara.textContent = object.wind;
 }
