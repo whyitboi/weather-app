@@ -17,20 +17,16 @@ function domLoad() {
     noValidate: true,
   });
 
-  //create search bar label and button
+  //create search bar and button
   //create search
   const search = document.createElement("search");
-  //create label
-  const searchLabel = document.createElement("label");
-  Object.assign(searchLabel, {
-    for: "searchBar",
-    textContent: "Enter your location",
-  });
+
   //input
   const searchInput = document.createElement("input");
   Object.assign(searchInput, {
     id: "searchBar",
     type: "search",
+    placeholder: "Enter Location",
     required: true,
   });
   //create button
@@ -66,45 +62,71 @@ function domLoad() {
   });
 
   //Create container divs for locationName, iconDescriotion
-  //and [humidity, sunrise]
+  //and weatherData [humidity, sunrise]
   const locationName = document.createElement("div");
   const iconDesc = document.createElement("div");
-  const humiditySunrise = document.createElement("div");
   const scaleDiv = document.createElement("div");
+  const weatherData = document.createElement("div");
+
+  //create the data cards
+  const weatherDataTemp = document.createElement("div");
+  const weatherDataHumidity = document.createElement("div");
+  const weatherDataWind = document.createElement("div");
+  const weatherDataSunrise = document.createElement("div");
+
+  weatherData.setAttribute("class", "weatherDataContainer");
+
+  Object.assign(weatherDataTemp, {
+    id: "tempCard",
+    className: "weatherDataCard",
+  });
+  Object.assign(weatherDataHumidity, {
+    id: "humidityCard",
+    className: "weatherDataCard",
+  });
+  Object.assign(weatherDataWind, {
+    id: "windCard",
+    className: "weatherDataCard",
+  });
+  Object.assign(weatherDataSunrise, {
+    id: "sunriseCard",
+    className: "weatherDataCard",
+  });
 
   //create labels and paragraphs for humidy and sunrise
+
   const humidityLabel = document.createElement("label");
   const sunriseLabel = document.createElement("label");
+  const windLabel = document.createElement("label");
   const humidityPara = document.createElement("p");
   const sunrisePara = document.createElement("p");
+  const windPara = document.createElement("p");
 
   //set attributes
   locationName.setAttribute("id", "locationName");
   iconDesc.setAttribute("id", "iconDesc");
-  humiditySunrise.setAttribute("id", "humiditySunrise");
+
   scaleDiv.setAttribute("id", "scaleDiv");
 
-  humiditySunrise.append(
-    humidityLabel,
-    sunriseLabel,
-    humidityPara,
-    sunrisePara,
+  //append elements to cards
+  weatherDataTemp.append(toggleTempScalesTemp, weatherIcon);
+  weatherDataHumidity.append(humidityLabel, humidityPara);
+  weatherDataSunrise.append(sunriseLabel, sunrisePara);
+  weatherDataWind.append(windLabel, windPara);
+
+  //append cards to card container
+  weatherData.append(
+    weatherDataTemp,
+    weatherDataHumidity,
+    weatherDataWind,
+    weatherDataSunrise,
   );
 
   toggleTempScales.append(toggleTempScalesInput, toggleTempScalesSpan);
   scaleDiv.append(toggleTempScales);
 
-  search.append(searchLabel, searchInput, searchButton);
+  search.append(searchInput, searchButton);
   form.appendChild(search);
-  content.append(
-    form,
-    locationName,
-    toggleTempScalesTemp,
-    iconDesc,
-    humiditySunrise,
-    scaleDiv,
-    weatherIcon,
-    weatherOutput,
-  );
+  content.append(form, locationName, weatherData, scaleDiv, weatherOutput);
 }
 export { domLoad };

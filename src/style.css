@@ -151,9 +151,7 @@ label {
 }
 
 img {
-  grid-row: 3;
-  grid-column: 2;
-  width: 10em;
+  width: 5em;
 }
 #searchBar {
   outline: none;
@@ -165,7 +163,22 @@ img {
 #searchBar:focus {
   border: 4px solid #2196f3;
 }
+.weatherDataContainer {
+  grid-column: 1 / span 2;
+  display: grid;
+  grid-template-columns: repeat(auto fit minmax(200px, 1fr)) 1fr;
+  border: 2px solid black;
+  gap: 20px;
+  padding: 20px;
+  background-color: grey;
+}
 
+.weatherDataCard {
+  border: 2px solid black;
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
 button {
   --fontColor: black;
   --borderRadius: 6px;
