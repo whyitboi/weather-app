@@ -47,6 +47,6 @@ export function displayWeatherData(object, tempSpan, weatherOutputDiv) {
   sunriseLabel.textContent = "Sunrise";
   sunrisePara.textContent = object.sunrise;
 
-  windLabel.textContent = "Wind";
-  windPara.textContent = object.wind + " " + metricWind;
+  windLabel.textContent = "Wind in " + metricWind;
+  windPara.textContent = object.wind;
 }

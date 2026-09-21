@@ -174,7 +174,8 @@ label {
   width: min(5em, 100%);
   align-self: center;
 }
-#weatherIcon {
+#weatherIcon,
+#windIcon {
   grid-column: 2;
 }
 #searchBar {
@@ -207,25 +208,26 @@ label {
   overflow: hidden;
   backdrop-filter: blur(10px);
   justify-items: center;
+  align-items: center;
 }
 .weatherDataCard {
   padding: 20px;
 }
-div#tempCard {
+div#tempCard,
+div#windCard {
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
 }
-div#windCard {
-  display: grid;
-  grid-template-rows: auto 0.75fr 1fr;
-}
-#windIcon {
-  grid-row: 2;
+
+#windLabel {
   grid-column: 1 / span 2;
 }
+
 #windPara {
   font-size: 40px;
-  grid-column: 1 / span 2;
+  padding: 1em;
+  /* padding-right: 10px;
+  padding-left: 40px; */
 }
 button {
   --fontColor: black;

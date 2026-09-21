@@ -126,7 +126,7 @@ function domLoad() {
   weatherDataTemp.append(toggleTempScalesTemp, weatherIcon, scaleDiv);
   weatherDataHumidity.append(humidityLabel, humidityPara);
   weatherDataSunrise.append(sunriseLabel, sunrisePara);
-  weatherDataWind.append(windLabel, windIcon, windPara);
+  weatherDataWind.append(windPara, windIcon, windLabel);
 
   //append cards to card container
   weatherData.append(
