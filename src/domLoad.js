@@ -7,7 +7,7 @@ function domLoad() {
   const weatherIcon = document.createElement("img");
   Object.assign(weatherIcon, {
     id: "weatherIcon",
-    className: "weatherIcon",
+    className: "icon",
   });
 
   //create the form
@@ -104,6 +104,7 @@ function domLoad() {
   const humidityPara = document.createElement("p");
   const sunrisePara = document.createElement("p");
   const windPara = document.createElement("p");
+  const windIcon = document.createElement("img");
 
   //set attributes
   humidityLabel.setAttribute("id", "humidityLabel");
@@ -113,6 +114,11 @@ function domLoad() {
   windLabel.setAttribute("id", "windLabel");
   windPara.setAttribute("id", "windPara");
 
+  Object.assign(windIcon, {
+    id: "windIcon",
+    className: "icon",
+  });
+
   toggleTempScales.append(toggleTempScalesInput, toggleTempScalesSpan);
   scaleDiv.append(toggleTempScales);
 
@@ -120,7 +126,7 @@ function domLoad() {
   weatherDataTemp.append(toggleTempScalesTemp, weatherIcon, scaleDiv);
   weatherDataHumidity.append(humidityLabel, humidityPara);
   weatherDataSunrise.append(sunriseLabel, sunrisePara);
-  weatherDataWind.append(windLabel, windPara);
+  weatherDataWind.append(windLabel, windIcon, windPara);
 
   //append cards to card container
   weatherData.append(
