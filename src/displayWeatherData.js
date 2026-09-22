@@ -1,6 +1,10 @@
-export function displayWeatherData(object, tempSpan, weatherOutputDiv) {
-  const content = document.getElementById("content");
+//get static image srcs
+import humidityIconSrc from "../icons/humidity.svg";
+import sunriseIconSrc from "../icons/sunrise.svg";
 
+export function displayWeatherData(object, tempSpan, weatherOutputDiv) {
+  const output = document.getElementById("output");
+  const weatherData = document.getElementById("weatherDataContainer");
   const weatherIcon = document.getElementById("weatherIcon");
   const windIcon = document.getElementById("windIcon");
   const metric = document.getElementById("tempScale").value;
@@ -38,7 +42,8 @@ export function displayWeatherData(object, tempSpan, weatherOutputDiv) {
   import(`../icons/wind-direction-${object.windDir}.svg`).then((iconModule) => {
     windIcon.src = iconModule.default;
   });
-  content.className = object.icon;
+
+  document.body.className = object.icon;
   locationName.textContent = object.location;
 
   humidityLabel.textContent = "Humidity";
@@ -49,4 +54,6 @@ export function displayWeatherData(object, tempSpan, weatherOutputDiv) {
 
   windLabel.textContent = "Wind in " + metricWind;
   windPara.textContent = object.wind;
+  output.style.visibility = "visible";
+  weatherData.style.visibility = "visible";
 }

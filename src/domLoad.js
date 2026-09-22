@@ -46,7 +46,10 @@ function domLoad() {
   const toggleTempScalesSpan = document.createElement("span");
 
   toggleTempScalesSpan.setAttribute("class", "slider");
-
+  Object.assign(weatherOutput, {
+    id: "output",
+    style: "visibility: hidden;",
+  });
   Object.assign(toggleTempScales, {
     id: "switch",
     className: "switch",
@@ -74,10 +77,15 @@ function domLoad() {
   const weatherDataWind = document.createElement("div");
   const weatherDataSunrise = document.createElement("div");
 
-  weatherData.setAttribute("class", "weatherDataContainer");
   locationName.setAttribute("id", "locationName");
   iconDesc.setAttribute("id", "iconDesc");
   scaleDiv.setAttribute("id", "scaleDiv");
+
+  Object.assign(weatherData, {
+    id: "weatherDataContainer",
+    className: "weatherDataContainer",
+    style: "visibility: hidden;",
+  });
 
   Object.assign(weatherDataTemp, {
     id: "tempCard",
@@ -105,6 +113,8 @@ function domLoad() {
   const sunrisePara = document.createElement("p");
   const windPara = document.createElement("p");
   const windIcon = document.createElement("img");
+  const humidityIcon = document.createElement("img");
+  const sunriseIcon = document.createElement("img");
 
   //set attributes
   humidityLabel.setAttribute("id", "humidityLabel");
@@ -114,6 +124,14 @@ function domLoad() {
   windLabel.setAttribute("id", "windLabel");
   windPara.setAttribute("id", "windPara");
 
+  Object.assign(humidityIcon, {
+    id: "humidityIcon",
+    className: "icon",
+  });
+  Object.assign(sunriseIcon, {
+    id: "sunriseIcon",
+    className: "icon",
+  });
   Object.assign(windIcon, {
     id: "windIcon",
     className: "icon",
@@ -124,8 +142,8 @@ function domLoad() {
 
   //append elements to cards
   weatherDataTemp.append(toggleTempScalesTemp, weatherIcon, scaleDiv);
-  weatherDataHumidity.append(humidityLabel, humidityPara);
-  weatherDataSunrise.append(sunriseLabel, sunrisePara);
+  weatherDataHumidity.append(humidityPara, humidityIcon, humidityLabel);
+  weatherDataSunrise.append(sunrisePara, sunriseIcon, sunriseLabel);
   weatherDataWind.append(windPara, windIcon, windLabel);
 
   //append cards to card container
