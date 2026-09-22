@@ -1,4 +1,7 @@
 import "./style.css";
+//get static image srcs
+import humidityIconSrc from "../icons/humidity.svg";
+import sunriseIconSrc from "../icons/sunrise.svg";
 
 function domLoad() {
   const content = document.getElementById("content");
@@ -40,12 +43,16 @@ function domLoad() {
   weatherOutput.setAttribute("id", "output");
 
   //create temperature scale toggle
-  const toggleTempScalesTemp = document.createElement("span");
+  const toggleTempScalesTempMeasurement = document.createElement("span");
+  const toggleTempScalesTempUnit = document.createElement("span");
+  const toggleTempScalesTempValue = document.createElement("span");
   const toggleTempScales = document.createElement("label");
   const toggleTempScalesInput = document.createElement("input");
   const toggleTempScalesSpan = document.createElement("span");
 
   toggleTempScalesSpan.setAttribute("class", "slider");
+  toggleTempScalesTempMeasurement.setAttribute("class", "measurementSpan");
+  toggleTempScalesTempValue.setAttribute("id", "tempScalesTempValue");
   Object.assign(weatherOutput, {
     id: "output",
     style: "visibility: hidden;",
@@ -54,10 +61,11 @@ function domLoad() {
     id: "switch",
     className: "switch",
   });
-  Object.assign(toggleTempScalesTemp, {
+  Object.assign(toggleTempScalesTempUnit, {
     id: "temperature",
     textContent: "\u00B0F",
   });
+
   Object.assign(toggleTempScalesInput, {
     id: "tempScale",
     type: "checkbox",
@@ -104,33 +112,54 @@ function domLoad() {
     className: "weatherDataCard",
   });
 
-  //create labels and paragraphs for humidy and sunrise
+  //create span to hold values and units
+  const windMeasurement = document.createElement("span");
+  const humidityMeasurement = document.createElement("span");
+  const sunriseMeasurement = document.createElement("span");
 
+  //create spans for humidy and sunrise
   const humidityLabel = document.createElement("label");
   const sunriseLabel = document.createElement("label");
-  const windLabel = document.createElement("label");
-  const humidityPara = document.createElement("p");
-  const sunrisePara = document.createElement("p");
-  const windPara = document.createElement("p");
+
+  const humidityValue = document.createElement("span");
+  const sunriseValue = document.createElement("span");
+  const windValue = document.createElement("span");
+  const windUnit = document.createElement("span");
   const windIcon = document.createElement("img");
   const humidityIcon = document.createElement("img");
   const sunriseIcon = document.createElement("img");
 
   //set attributes
+  windMeasurement.setAttribute("class", "measurementSpan");
+  humidityMeasurement.setAttribute("class", "measurementSpan");
+  sunriseMeasurement.setAttribute("class", "measurementSpan");
+
   humidityLabel.setAttribute("id", "humidityLabel");
-  humidityPara.setAttribute("id", "humidityPara");
+  humidityValue.setAttribute("id", "humidityValue");
   sunriseLabel.setAttribute("id", "sunriseLabel");
-  sunrisePara.setAttribute("id", "sunrisePara");
-  windLabel.setAttribute("id", "windLabel");
-  windPara.setAttribute("id", "windPara");
+  sunriseValue.setAttribute("id", "sunriseValue");
+  windValue.setAttribute("id", "windValue");
+  windUnit.setAttribute("id", "windUnit");
+
+  Object.assign(humidityMeasurement, {
+    id: "sunriseMeasurementSpan",
+    className: "measurementSpan",
+  });
+
+  Object.assign(sunriseMeasurement, {
+    id: "humidityMeasurementSpan",
+    className: "measurementSpan",
+  });
 
   Object.assign(humidityIcon, {
     id: "humidityIcon",
     className: "icon",
+    src: humidityIconSrc,
   });
   Object.assign(sunriseIcon, {
     id: "sunriseIcon",
     className: "icon",
+    src: sunriseIconSrc,
   });
   Object.assign(windIcon, {
     id: "windIcon",
@@ -140,11 +169,23 @@ function domLoad() {
   toggleTempScales.append(toggleTempScalesInput, toggleTempScalesSpan);
   scaleDiv.append(toggleTempScales);
 
+  toggleTempScalesTempMeasurement.append(
+    toggleTempScalesTempValue,
+    toggleTempScalesTempUnit,
+  );
+  windMeasurement.append(windValue, windUnit, windIcon);
+  humidityMeasurement.append(humidityValue, humidityIcon);
+  sunriseMeasurement.append(sunriseValue, sunriseIcon);
+
   //append elements to cards
-  weatherDataTemp.append(toggleTempScalesTemp, weatherIcon, scaleDiv);
-  weatherDataHumidity.append(humidityPara, humidityIcon, humidityLabel);
-  weatherDataSunrise.append(sunrisePara, sunriseIcon, sunriseLabel);
-  weatherDataWind.append(windPara, windIcon, windLabel);
+  weatherDataTemp.append(
+    toggleTempScalesTempMeasurement,
+    weatherIcon,
+    scaleDiv,
+  );
+  weatherDataHumidity.append(humidityLabel, humidityMeasurement);
+  weatherDataSunrise.append(sunriseLabel, sunriseMeasurement);
+  weatherDataWind.append(windMeasurement, windIcon);
 
   //append cards to card container
   weatherData.append(

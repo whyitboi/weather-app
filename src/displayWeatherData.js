@@ -1,22 +1,19 @@
-//get static image srcs
-import humidityIconSrc from "../icons/humidity.svg";
-import sunriseIconSrc from "../icons/sunrise.svg";
-
-export function displayWeatherData(object, tempSpan, weatherOutputDiv) {
+export function displayWeatherData(object, tempUnitSpan, weatherOutputDiv) {
   const output = document.getElementById("output");
   const weatherData = document.getElementById("weatherDataContainer");
   const weatherIcon = document.getElementById("weatherIcon");
   const windIcon = document.getElementById("windIcon");
   const metric = document.getElementById("tempScale").value;
+  const tempValueSpan = document.getElementById("tempScalesTempValue");
 
   const humidityLabel = document.getElementById("humidityLabel");
-  const humidityPara = document.getElementById("humidityPara");
+  const humidityValue = document.getElementById("humidityValue");
 
-  const windLabel = document.getElementById("windLabel");
-  const windPara = document.getElementById("windPara");
+  const windValue = document.getElementById("windValue");
+  const windUnit = document.getElementById("windUnit");
 
   const sunriseLabel = document.getElementById("sunriseLabel");
-  const sunrisePara = document.getElementById("sunrisePara");
+  const sunriseValue = document.getElementById("sunriseValue");
 
   const locationName = document.getElementById("locationName");
 
@@ -29,7 +26,8 @@ export function displayWeatherData(object, tempSpan, weatherOutputDiv) {
     metricTemp = "\u00B0C";
     metricWind = "km/h";
   }
-  tempSpan.textContent = object.temp + metricTemp;
+  tempUnitSpan.textContent = metricTemp;
+  tempValueSpan.textContent = object.temp;
   weatherOutputDiv.textContent = object.weatherOutputText;
   //use dynamic import to return a promise and set src of the img
   //to the default value of the promise after it is resolved
@@ -47,13 +45,13 @@ export function displayWeatherData(object, tempSpan, weatherOutputDiv) {
   locationName.textContent = object.location;
 
   humidityLabel.textContent = "Humidity";
-  humidityPara.textContent = object.humid;
+  humidityValue.textContent = object.humid;
 
   sunriseLabel.textContent = "Sunrise";
-  sunrisePara.textContent = object.sunrise;
+  sunriseValue.textContent = object.sunrise;
 
-  windLabel.textContent = "Wind in " + metricWind;
-  windPara.textContent = object.wind;
+  windUnit.textContent = metricWind;
+  windValue.textContent = object.wind;
   output.style.visibility = "visible";
   weatherData.style.visibility = "visible";
 }

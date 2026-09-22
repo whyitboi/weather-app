@@ -149,13 +149,24 @@ div#locationName {
   padding-top: 10px;
 }
 
-span#temperature {
-  /* grid-row: 3; */
-  justify-self: flex-end;
-  align-self: center;
+#windUnit,
+#temperature {
+  padding-left: 5px;
+  align-self: flex-start;
+}
+
+#tempScalesTempValue,
+#windValue,
+#humidityValue,
+#sunriseValue {
   font-size: 40px;
+}
+.measurementSpan {
+  display: flex;
+  justify-items: center;
   padding: 1em;
 }
+
 div#scaleDiv {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -176,13 +187,30 @@ label {
   align-self: center;
   font-size: 20px;
 }
-.icon {
-  width: min(5em, 100%);
+img.icon {
+  width: min(8em, 100%);
   align-self: center;
 }
 #weatherIcon,
 #windIcon {
   grid-column: 2;
+}
+
+#sunriseIcon,
+#humidityIcon {
+  width: 8em;
+}
+#sunriseMeasurementSpan,
+#humidityMeasurementSpan {
+  grid-row: 1 / span 2;
+  align-items: center;
+  margin: 0;
+  /* grid-column: 1; */
+}
+
+#humidityValue {
+  grid-column: 1;
+  grid-row: 1;
 }
 #searchBar {
   outline: none;
