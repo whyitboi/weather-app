@@ -59,7 +59,7 @@ function app() {
         setTimeout(() => {
           loading.style.display = "none";
           content.classList.remove("loading");
-        }, 3000);
+        }, 1000);
       });
   });
 }

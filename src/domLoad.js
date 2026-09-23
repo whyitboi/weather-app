@@ -210,7 +210,7 @@ function domLoad() {
 
   search.append(searchInput, searchButton);
   form.appendChild(search);
-  content.appendChild(loading);
+  document.body.appendChild(loading);
   content.append(form, locationName, weatherData, weatherOutput);
 }
 export { domLoad };
