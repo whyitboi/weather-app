@@ -52,6 +52,7 @@ export function displayWeatherData(object, tempUnitSpan, weatherOutputDiv) {
 
   windUnit.textContent = metricWind;
   windValue.textContent = object.wind;
-  output.style.visibility = "visible";
-  weatherData.style.visibility = "visible";
+  locationName.style.display = "flex";
+  output.style.display = "block";
+  weatherData.style.display = "grid";
 }

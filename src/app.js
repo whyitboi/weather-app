@@ -4,12 +4,15 @@ import { displayWeatherData } from "./displayWeatherData.js";
 import { checkMetric } from "./checkMetric.js";
 
 function app() {
+  const content = document.getElementById("content");
   const form = document.querySelector("form");
   const search = document.getElementById("searchBar");
   const weatherOutput = document.getElementById("output");
 
   const metric = document.getElementById("tempScale");
   const metricDisplay = document.getElementById("temperature");
+
+  const loading = document.getElementById("loading");
 
   metric.addEventListener("change", () => {
     checkMetric(metric, metricDisplay);
@@ -22,11 +25,18 @@ function app() {
     if (search.value === "") {
       return;
     } else {
-      getWeather(search.value, metric.value).then((response) => {
-        if (response === undefined) return;
-        const processedData = processData(response);
-        displayWeatherData(processedData, metricDisplay, weatherOutput);
-      });
+      // content.classList.add("loading");
+      // loading.style.display = "flex";
+      getWeather(search.value, metric.value)
+        .then((response) => {
+          if (response === undefined) return;
+          const processedData = processData(response);
+          displayWeatherData(processedData, metricDisplay, weatherOutput);
+        })
+        .finally(() => {
+          loading.style.display = "none";
+          content.classList.remove("loading");
+        });
     }
   });
 
@@ -37,12 +47,20 @@ function app() {
       search.reportValidity();
       return;
     } else search.setCustomValidity("");
-
-    getWeather(search.value, metric.value).then((response) => {
-      if (response === undefined) return;
-      const processedData = processData(response);
-      displayWeatherData(processedData, metricDisplay, weatherOutput);
-    });
+    content.classList.add("loading");
+    loading.style.display = "flex";
+    getWeather(search.value, metric.value)
+      .then((response) => {
+        if (response === undefined) return;
+        const processedData = processData(response);
+        displayWeatherData(processedData, metricDisplay, weatherOutput);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          loading.style.display = "none";
+          content.classList.remove("loading");
+        }, 3000);
+      });
   });
 }
 export { app };

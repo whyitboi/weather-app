@@ -55,7 +55,7 @@ function domLoad() {
   toggleTempScalesTempValue.setAttribute("id", "tempScalesTempValue");
   Object.assign(weatherOutput, {
     id: "output",
-    style: "visibility: hidden;",
+    style: "display: none;",
   });
   Object.assign(toggleTempScales, {
     id: "switch",
@@ -85,14 +85,18 @@ function domLoad() {
   const weatherDataWind = document.createElement("div");
   const weatherDataSunrise = document.createElement("div");
 
-  locationName.setAttribute("id", "locationName");
   iconDesc.setAttribute("id", "iconDesc");
   scaleDiv.setAttribute("id", "scaleDiv");
+
+  Object.assign(locationName, {
+    id: "locationName",
+    style: "display: none;",
+  });
 
   Object.assign(weatherData, {
     id: "weatherDataContainer",
     className: "weatherDataContainer",
-    style: "visibility: hidden;",
+    style: "display: none;",
   });
 
   Object.assign(weatherDataTemp, {
@@ -129,6 +133,9 @@ function domLoad() {
   const humidityIcon = document.createElement("img");
   const sunriseIcon = document.createElement("img");
 
+  //loading div
+  const loading = document.createElement("div");
+
   //set attributes
   windMeasurement.setAttribute("class", "measurementSpan");
   humidityMeasurement.setAttribute("class", "measurementSpan");
@@ -141,13 +148,19 @@ function domLoad() {
   windValue.setAttribute("id", "windValue");
   windUnit.setAttribute("id", "windUnit");
 
+  Object.assign(loading, {
+    id: "loading",
+    textContent: "loading...",
+    style: "display: none",
+  });
+
   Object.assign(humidityMeasurement, {
-    id: "sunriseMeasurementSpan",
+    id: "humidityMeasurementSpan",
     className: "measurementSpan",
   });
 
   Object.assign(sunriseMeasurement, {
-    id: "humidityMeasurementSpan",
+    id: "sunriseMeasurementSpan",
     className: "measurementSpan",
   });
 
@@ -197,6 +210,7 @@ function domLoad() {
 
   search.append(searchInput, searchButton);
   form.appendChild(search);
+  content.appendChild(loading);
   content.append(form, locationName, weatherData, weatherOutput);
 }
 export { domLoad };
